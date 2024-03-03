@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">s
+  <title>Single Page Interactive Navigation Menu</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+    
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #333;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+    
+    .nav-item {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 15px;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-item:hover {
+      color: #ffcc00;
+    }
+    
+    .content {
+      padding-top: 50px; /* Ensure content doesn't get hidden behind the navbar */
+      height: 2000px; /* Example height for demonstration */
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar" id="navbar">
+    <a href="#home" class="nav-item">Home</a>
+    <a href="#about" class="nav-item">About</a>
+    <a href="#services" class="nav-item">Services</a>
+    <a href="#contact" class="nav-item">Contact</a>
+  </div>
+  <div id="home" class="content">
+    <h2>Home</h2>
+    <p>This is the home section.</p>
+  </div>
+  <div id="about" class="content">
+    <h2>About</h2>
+    <p>This is the about section.</p>
+  </div>
+  <div id="services" class="content">
+    <h2>Services</h2>
+    <p>This is the services section.</p>
+  </div>
+  <div id="contact" class="content">
+    <h2>Contact</h2>
+    <p>This is the contact section.</p>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var navbar = document.getElementById("navbar");
+      var scrolled = false;
+
+      window.addEventListener("scroll", function() {
+        if (window.scrollY > 50) {
+          navbar.style.backgroundColor = "#555"; // Change background color when scrolled
+          scrolled = true;
+        } else {
+          navbar.style.backgroundColor = "#333"; // Change back to original color
+          scrolled = false;
+        }
+      });
+
+      // Restore background color on mouse leave if not scrolled
+      navbar.addEventListener("mouseleave", function() {
+        if (!scrolled) {
+          navbar.style.backgroundColor = "#333";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
